@@ -1,0 +1,114 @@
+<!-- Get jquery files from google -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Get Bootstrap files from online: https://getbootstrap.com/docs/4.1/getting-started/download/-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
+<!--
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+-->
+
+<!-- Got idea and code from https://stackoverflow.com/questions/21566649/flask-button-run-python-without-refreshing-page-->
+
+<!-- JS script to add 100 calories to dave-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#dave-add-100').bind('click', function() {
+		$.getJSON('/action?command=add&amount=100',
+			function(data) {
+			$("#dave-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
+
+<!-- JS script to add 50 calories to dave-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#dave-add-50').bind('click', function() {
+		$.getJSON('/action?command=add&amount=50',
+			function(data) {
+			$("#dave-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
+
+<!-- Need to edit Action route to accept people too so this wont work atm-->
+
+<!-- JS script to add 100 calories to Meg-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#meg-add-100').bind('click', function() {
+		$.getJSON('/action?command=add&amount=100',
+			function(data) {
+			$("#meg-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
+
+<!-- JS script to add 50 calories to Meg-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#meg-add-50').bind('click', function() {
+		$.getJSON('/action?command=add&amount=50',
+			function(data) {
+			$("#meg-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
+
+<html>
+<head>
+	<title>Calories</title>
+</head>
+
+<body style="text-align: center;">
+	<h1>Calorie Counter</h1>
+
+	<div class="d-flex justify-content-center" ></div>
+			<div class="card border-primary mb-3" style="max-width: 20rem;margin:auto">
+				<div class="card-header">Dave Calories</div>
+				<div class="card-body">
+					<p> <span id=dave-result>{{ dave_calories }} </span> </br>
+					<a href=# id=dave-add-100><button class='btn btn-primary'>+100 Calories</button></a>
+					<a href=# id=dave-add-50><button class='btn btn-primary'>+ 50 Calories</button></a>
+					
+				</div>
+			</div>
+
+			<div class="card border-primary mb-3" style="max-width: 20rem;margin:auto">
+				<div class="card-header">Meg Calories</div>
+				<div class="card-body">
+					<p> <span id=meg-result>{{ meg_calories }} </span> </br>
+					<a href=# id=meg-add-100><button class='btn btn-primary'>+100 Calories</button></a>
+					<a href=# id=meg-add-50><button class='btn btn-primary'>+ 50 Calories</button></a>
+					
+				</div>
+			</div>
+		
+			</div>
+		</div>
+
+	</div>
+
+	<div>
+		<hr>
+		A Flask website by David Saunders.
+
+		<br>
+		<a href="https://github.com/DJSaunders1997/GUI-Cam">Github</a>
+		<br>
+	</div>
+
+	<!-- TODO: Make into a neatly formatted table-->
+
+</body>
+
+</html>
