@@ -78,7 +78,7 @@
 <!-- JS script to minus 100 calories to Meg-->
 <script type=text/javascript>
 	$(function() {
-	  $('a#meg-minus-50').bind('click', function() {
+	  $('a#meg-minus-100').bind('click', function() {
 		$.getJSON('/add/Meg/-100',
 			function(data) {
 			$("#meg-result").text(data.result);
