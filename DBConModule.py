@@ -1,9 +1,10 @@
 from pymongo import MongoClient
 from datetime import datetime
+import os
 
 # Get password from local file not published to GitHub
-f = open("password.txt", "r")
-password = f.read()
+
+password = os.environ.get('MONGO_PW')
 
 # connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
 client = MongoClient(f'mongodb+srv://user:{password}@cluster0.ad9pz.mongodb.net/test')
