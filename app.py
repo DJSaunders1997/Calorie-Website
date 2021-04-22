@@ -52,3 +52,7 @@ def action2():
 @app.route('/who')
 def who():
     return 'Made By Dave'
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="5000")
