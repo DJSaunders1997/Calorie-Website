@@ -7,47 +7,21 @@ import DBConModule
 def index():
 
     dave_calories = DBConModule.get_daily_total('Dave')
-    meg_calories = DBConModule.get_daily_total('Dave')
+    meg_calories = DBConModule.get_daily_total('Meg')
 
     return render_template('index.html', dave_calories=dave_calories, meg_calories=meg_calories)
 
-@app.route('/action')
-def action():
-    print('starting action')
-    command = request.args.get('command', default ='add', type = str)
-    amount = request.args.get('amount', default =0, type = int)
-
-    if command == 'add':
-        # todo call add calories
-        DBConModule.add_calories('Dave', amount)
-        res = DBConModule.get_daily_total('Dave')
-    elif command == 'minus':
-        # minus calories
-        print()
+# Changed from Messy Action to just an add rout
+# Default will be me and 0 calories
+@app.route('/add/<person>/<amount>')
+def add(person='Dave', amount='0'):
     
-    dave_calories = DBConModule.get_daily_total('Dave')
-    meg_calories = DBConModule.get_daily_total('Meg')
+    # Cast amount to int before adding
+    DBConModule.add_calories(person, int(amount))
+    res = DBConModule.get_daily_total(person)
 
-    #return render_template('index.html', dave_calories=dave_calories, meg_calories=meg_calories)
-    return jsonify(result=dave_calories)
+    return jsonify(result=res)
 
-@app.route('/action2')
-def action2():
-    print('starting action 2')
-    command = request.args.get('command', default ='add', type = str)
-    amount = request.args.get('amount', default =0, type = int)
-
-    if command == 'add':
-        # todo call add calories
-        DBConModule.add_calories('Dave', amount)
-        res = DBConModule.get_daily_total('Dave')
-    elif command == 'minus':
-        # minus calories
-        print()
-    
-    dave_calories = DBConModule.get_daily_total('Dave')
-
-    return jsonify(result=dave_calories)
 
 @app.route('/who')
 def who():

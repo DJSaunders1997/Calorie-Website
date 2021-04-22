@@ -14,7 +14,7 @@
 <script type=text/javascript>
 	$(function() {
 	  $('a#dave-add-100').bind('click', function() {
-		$.getJSON('/action?command=add&amount=100',
+		$.getJSON('/add/Dave/100',
 			function(data) {
 			$("#dave-result").text(data.result);
 		});
@@ -27,7 +27,7 @@
 <script type=text/javascript>
 	$(function() {
 	  $('a#dave-add-50').bind('click', function() {
-		$.getJSON('/action?command=add&amount=50',
+		$.getJSON('/add/Dave/50',
 			function(data) {
 			$("#dave-result").text(data.result);
 		});
@@ -42,7 +42,7 @@
 <script type=text/javascript>
 	$(function() {
 	  $('a#meg-add-100').bind('click', function() {
-		$.getJSON('/action?command=add&amount=100',
+		$.getJSON('/add/Meg/100',
 			function(data) {
 			$("#meg-result").text(data.result);
 		});
@@ -55,7 +55,7 @@
 <script type=text/javascript>
 	$(function() {
 	  $('a#meg-add-50').bind('click', function() {
-		$.getJSON('/action?command=add&amount=50',
+		$.getJSON('/add/Meg/50',
 			function(data) {
 			$("#meg-result").text(data.result);
 		});
