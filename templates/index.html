@@ -36,7 +36,18 @@
 });
 </script>
 
-<!-- Need to edit Action route to accept people too so this wont work atm-->
+<!-- JS script to minus 100 calories to dave-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#dave-minus-100').bind('click', function() {
+		$.getJSON('/add/Dave/-100',
+			function(data) {
+			$("#dave-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
 
 <!-- JS script to add 100 calories to Meg-->
 <script type=text/javascript>
@@ -64,6 +75,19 @@
 });
 </script>
 
+<!-- JS script to minus 100 calories to Meg-->
+<script type=text/javascript>
+	$(function() {
+	  $('a#meg-minus-50').bind('click', function() {
+		$.getJSON('/add/Meg/-100',
+			function(data) {
+			$("#meg-result").text(data.result);
+		});
+	return false;
+  });
+});
+</script>
+
 <html>
 <head>
 	<title>Calories</title>
@@ -79,6 +103,7 @@
 					<p> <span id=dave-result>{{ dave_calories }} </span> </br>
 					<a href=# id=dave-add-100><button class='btn btn-primary'>+100 Calories</button></a>
 					<a href=# id=dave-add-50><button class='btn btn-primary'>+ 50 Calories</button></a>
+					<a href=# id=dave-minus-100><button class='btn btn-primary'>- 100 Calories</button></a>
 					
 				</div>
 			</div>
@@ -89,6 +114,7 @@
 					<p> <span id=meg-result>{{ meg_calories }} </span> </br>
 					<a href=# id=meg-add-100><button class='btn btn-primary'>+100 Calories</button></a>
 					<a href=# id=meg-add-50><button class='btn btn-primary'>+ 50 Calories</button></a>
+					<a href=# id=meg-minus-100><button class='btn btn-primary'>- 100 Calories</button></a>
 					
 				</div>
 			</div>
