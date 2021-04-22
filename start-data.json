@@ -1,0 +1,54 @@
+{
+    "person1": {
+        "name": "Dave",
+        "target": 2000,
+        "calories": [
+            {
+                "timestamp": "2021-04-18 09:00",
+                "calories": 200
+            },
+            {
+                "timestamp": "2021-04-18 14:00",
+                "calories": 700
+            },
+            {
+                "timestamp": "2021-04-18 21:00",
+                "calories": 1200
+            },
+            {
+                "timestamp": "2021-04-19 09:30",
+                "calories": 400
+            },
+            {
+                "timestamp": "2021-04-18 12:00",
+                "calories": 1200
+            }
+        ]
+    },
+    "person2": {
+        "name": "Meg",
+        "target": 1800,
+        "calories": [
+            {
+                "timestamp": "2021-04-18 08:00",
+                "calories": 500
+            },
+            {
+                "timestamp": "2021-04-18 16:00",
+                "calories": 700
+            },
+            {
+                "timestamp": "2021-04-18 23:00",
+                "calories": 1700
+            },
+            {
+                "timestamp": "2021-04-19 10:30",
+                "calories": 100
+            },
+            {
+                "timestamp": "2021-04-18 18:00",
+                "calories": 100
+            }
+        ]
+    }
+}
