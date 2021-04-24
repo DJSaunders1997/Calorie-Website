@@ -95,7 +95,16 @@
 
 <body style="text-align: center;">
 	<h1>Calorie Counter</h1>
-	<h4>Day: {{date.strftime("%Y-%m-%d")}}</h4>
+
+		{% if date.date() == datetime.datetime.today().date() %}
+			<h4>Day: Today </h4>
+		{% elif date.date() == (datetime.datetime.today()+ datetime.timedelta(days=1)).date() %}
+			<h4>Day: Tomorrow </h4>
+		{% elif date.date() == (datetime.datetime.today()+ datetime.timedelta(days=-1)).date() %}
+			<h4>Day: Yesterday </h4>
+		{% else %}
+			<h4>Day: {{date.strftime("%Y-%m-%d")}}</h4>
+		{% endif %}
 
 	<a href={{ (date+datetime.timedelta(days=-1)).strftime("%Y-%m-%d") }} id=prev-day>Previous Day</a> |
 	<a href={{ (date+datetime.timedelta(days=1)).strftime("%Y-%m-%d") }} id=next-day>Next Day</a>
