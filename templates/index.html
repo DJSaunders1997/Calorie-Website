@@ -95,7 +95,11 @@
 
 <body style="text-align: center;">
 	<h1>Calorie Counter</h1>
-	<h4>Day: {{date}}</h4>
+	<h4>Day: {{date.strftime("%Y-%m-%d")}}</h4>
+
+	<a href={{ (date+datetime.timedelta(days=-1)).strftime("%Y-%m-%d") }} id=prev-day>Previous Day</a> |
+	<a href={{ (date+datetime.timedelta(days=1)).strftime("%Y-%m-%d") }} id=next-day>Next Day</a>
+<br>
 
 	<div class="d-flex justify-content-center" ></div>
 			<div class="card border-primary mb-3" style="max-width: 20rem;margin:auto">

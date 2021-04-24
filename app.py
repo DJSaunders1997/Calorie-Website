@@ -1,18 +1,27 @@
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
-from datetime import datetime
+import datetime
+today = datetime.datetime.today().strftime("%Y-%m-%d")
+
 import DBConModule
 
 @app.route('/')
-def index():
+@app.route('/<date>')
+#default date will be today
+def index(date=today):
 
-    date = datetime.today().strftime("%Y-%m-%d")
+    #convert date from string to datetime
+    date = datetime.datetime.strptime(date, "%Y-%m-%d")
+
+    #print(date.strftime("%Y-%m-%d"))
 
     dave_calories = DBConModule.get_daily_total('Dave')
     meg_calories = DBConModule.get_daily_total('Meg')
 
-    return render_template('index.html', date=date, dave_calories=dave_calories, meg_calories=meg_calories)
+    #pass through date object to html so we can increment the day there.
+    #will convert to string before showing it.
+    return render_template('index.html', date=date, dave_calories=dave_calories, meg_calories=meg_calories, datetime=datetime)
 
 # Changed from Messy Action to just an add rout
 # Default will be me and 0 calories
