@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
+from datetime import datetime
 import DBConModule
 
 @app.route('/')
 def index():
 
+    date = datetime.today().strftime("%Y-%m-%d")
+
     dave_calories = DBConModule.get_daily_total('Dave')
     meg_calories = DBConModule.get_daily_total('Meg')
 
-    return render_template('index.html', dave_calories=dave_calories, meg_calories=meg_calories)
+    return render_template('index.html', date=date, dave_calories=dave_calories, meg_calories=meg_calories)
 
 # Changed from Messy Action to just an add rout
 # Default will be me and 0 calories
