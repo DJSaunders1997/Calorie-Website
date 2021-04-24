@@ -11,13 +11,16 @@ import DBConModule
 #default date will be today
 def index(date=today):
 
-    #convert date from string to datetime
+    #convert date from string to datetime    
     date = datetime.datetime.strptime(date, "%Y-%m-%d")
+
+    global global_date
+    global_date = date # update global date so add route can access
 
     #print(date.strftime("%Y-%m-%d"))
 
-    dave_calories = DBConModule.get_daily_total('Dave')
-    meg_calories = DBConModule.get_daily_total('Meg')
+    dave_calories = DBConModule.get_daily_total('Dave', date)
+    meg_calories = DBConModule.get_daily_total('Meg', date)
 
     #pass through date object to html so we can increment the day there.
     #will convert to string before showing it.
@@ -26,11 +29,17 @@ def index(date=today):
 # Changed from Messy Action to just an add rout
 # Default will be me and 0 calories
 @app.route('/add/<person>/<amount>')
+# @app.route('/add/<person>/<date>/<amount>')
 def add(person='Dave', amount='0'):
     
+    #convert date from string to datetime
+    #date = datetime.datetime.strptime(date, "%Y-%m-%d")
+
+    print(person, global_date.strftime("%Y-%m-%d %H:%M:%S"), amount)
+
     # Cast amount to int before adding
-    DBConModule.add_calories(person, int(amount))
-    res = DBConModule.get_daily_total(person)
+    DBConModule.add_calories(person, global_date, int(amount))
+    res = DBConModule.get_daily_total(person, global_date)
 
     return jsonify(result=res)
 
