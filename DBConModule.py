@@ -3,6 +3,7 @@ import datetime
 import os
 
 # Get password from local enviroment variable not published to GitHub
+#os.environ["MONGO_PW"] = #"enter_password_here" # Reminder of how to set enviroment variables in Python
 password = os.environ.get('MONGO_PW')
 
 # connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
